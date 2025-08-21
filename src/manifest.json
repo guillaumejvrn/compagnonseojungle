@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Compagnon SEOJungle",
+  "description": "Compagnon SEOJungle est une extension qui ajoute des boutons pratiques sous les liens lors de vos recherches sur Google. Ces boutons permettent d'afficher instantanément des informations directement issues du site SEOJungle, pour une expérience de recherche optimisée et des données SEO à portée de main.",
+  "options_page": "options.html",
+  "background": { "service_worker": "background.bundle.js" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-34.png"
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["contentScript.bundle.js"],
+      "css": ["content.styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "devtools_page": "devtools.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["content.styles.css", "icon-128.png", "icon-34.png"],
+      "matches": []
+    }
+  ],
+    "permissions": ["storage", "activeTab", "scripting", "cookies"],
+    "host_permissions": ["<all_urls>"],
+    "optional_permissions": ["tabs", "webNavigation", "webRequest", "webRequestBlocking"]
+}
